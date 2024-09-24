@@ -1,0 +1,85 @@
+@fontePrincipal: Roboto, sans-serif;
+@fonteDoTitulo: "Anton", sans-serif;
+@corDoTexto: white;
+@corDoFundo: #2c3e50;
+@corDosBotoes: #34e7e4;
+
+body {
+    background-color: @corDoFundo;
+    font-family: @fontePrincipal;
+    font-weight: 100;
+    font-style: normal;
+    color: @corDoTexto;
+}
+
+h1 {
+    font-family: @fonteDoTitulo;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3em;
+
+    img {
+        width: 25%;
+    }
+
+    .imagem-borda {
+        border-radius: 40px;
+    }
+}
+
+h2 {
+    font-family: @fonteDoTitulo;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2em;
+}
+
+h3 {
+    color: @corDosBotoes;
+}
+
+main {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 2em;
+    text-align: center;
+}
+
+iframe {
+    width: 90%;
+    margin: auto;
+    display: block;
+    border-radius: 20px;
+}
+
+button {
+    padding: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-top: 16px;
+    border-radius: 8px;
+    background-color: @corDosBotoes;
+    color: @corDoTexto;
+    font-family: @fontePrincipal;
+    border: 3px solid @corDosBotoes;
+
+    &:hover {
+        background-color: transparent;
+        color: @corDosBotoes;
+    }
+}
+
+.resultado {
+    padding: 16px;
+    margin-top: 80px;
+}
+
+.result, .description {
+    margin-bottom: 30px;
+}
+
+strong {
+    color: @corDosBotoes;
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- links para as fonts google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- link para o CSS -->
+    <link rel="stylesheet" href="@@endereco_do_css">
+    <title>Pedra, papel, tesoura, lagarto, Spock</title>
+    <!-- Configurando o Grunt
+        1 - Inicie o terminal com "F1" e instale o Grunt de forma global com "npm i -g grunt-cli"
+        2 - Após, inicie o npm com "npm init" e configure para iniciar o .json
+        3 - Agora para instalar o Grunt no projeto, execute o comando "npm i --save-dev grunt"
+        4 - No package.json, em scripts, adicione ("grunt": "grunt",)
+        5 - Crie o arquivo de configuração do Grunt, com o nome "gruntfile.js"
+        6 - Dentro de gruntfile.js, aplique a seguinte função:
+            module.exports = function(grunt) {
+                grunt.initConfig({
+                    pkg: grunt.file.readJSON('package.json'),
+                })
+            }
+        7 - Após aplicar a função, vá no terminal e execute o comando "npm run grunt" (obs: ele sempre apresentará erro se não tiver uma função default para executar)-->
+
+    <!-- Instalando o plugin do LESS, para combina-lo ao Grunt
+        1 - No terminal, execute o comando "npm install --save-dev grunt-contrib-less"
+        2 - No arquivo gruntfile.js adicione a função "grunt.loadNpmTasks('grunt-contrib-less');"
+        3 - E na função mudule.exports, adicione os seguintes códigos:
+            less: {
+                development: {
+                    files: {
+                        'main.css' : 'main.less'
+                    }
+                },
+                production: {
+                    options: {
+                        compress: true,
+                    },
+                    files: {
+                        'main.min.css': 'main.less'
+                    }
+                }
+            }
+        4 - Após isso crie o arquivo main.less e adicione a função less na função default-->
+
+    <!-- Instalando Plugin para função watch do Grunt
+        1 - No terminal, execute o comando "npm install --save-dev grunt-contrib-watch"
+        2 - No arquivo gruntfile.js adicione a função "grunt.loadNpmTasks('grunt-contrib-watch');"
+        3 - E na função mudule.exports, adicione os seguintes códigos:
+            watch: {
+                less: {
+                    files: ['src/styles/**/*.less'],
+                    tasks: ['less:development']
+                }
+            }
+        4 - Na função default ou a que estiver utilizando este recurso, substituir o conteúdo do array por "watch"-->
+
+    <!-- Instalando Plugin grunt-replace
+        1 - No terminal, execute o comando "npm install --save-dev grunt-replace"
+        2 - No arquivo gruntfile.js adicione a função "grunt.loadNpmTasks('grunt-replace');"
+        3 - E na função mudule.exports, adicione os seguintes códigos:
+            replace: {
+                dev: {
+                    options: {
+                        patterns: [
+                            {
+                                match: 'endereco_do_css',
+                                replacement: './styles/main.css'
+                            }
+                        ]
+                    },
+                    files: [
+                        {
+                            expand: true,
+                            flatten: true,
+                            src: ['src/index.html'],
+                            dest: 'dev/'
+                        }
+                    ]
+                }
+            }
+        4 - Substitua no link css do HTML, o local do css por "@@endereco_do_css"-->
+        
+    <!-- Instalando Plugin htmlmin
+        1 - No terminal, execute o comando "npm install --save-dev grunt-contrib-htmlmin"
+        2 - No arquivo gruntfile.js adicione a função "grunt.loadNpmTasks('grunt-contrib-htmlmin');"
+        3 - E na função mudule.exports, adicione os seguintes códigos:
+        htmlmin: {
+            dist: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true,
+                },
+                files: {
+                    'prebuild/index.html': 'src/index.html'
+                }
+            }
+        }
+        4 - e na função de replace também adicione:
+        dist: {
+                options: {
+                    patterns: [
+                        {
+                            match: 'endereco_do_css',
+                            replacement: './styles/main.min.css'
+                        }
+                    ]
+                },
+                files: [
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: ['prebuild/index.html'],
+                        dest: 'dist/'
+                    }
+                ]
+            }
+        5 - na função watch adicione:
+        html: {
+            files: ['src/index.html'],
+            tasks: ['replace:dev']
+        }-->
+
+    <!-- Instalando Plugin clean
+        1 - No terminal, execute o comando "npm install --save-dev grunt-contrib-clean"
+        2 - No arquivo gruntfile.js adicione a função "grunt.loadNpmTasks('grunt-contrib-clean');"
+        3 - E na função mudule.exports, adicione os seguintes códigos:
+            clean: ['prebuild']-->
+
+    <!-- Instalando Plugin uglify
+        1 - No terminal, execute o comando "npm install --save-dev grunt-contrib-uglify"
+        2 - No arquivo gruntfile.js adicione a função "grunt.loadNpmTasks('grunt-contrib-uglify');"
+        3 - E na função mudule.exports, adicione os seguintes códigos:
+        uglify: {
+            target: {
+                files: {
+                    'dist/scripts/main.min.js': 'src/scripts/main.js'
+                }
+            }
+        }
+        4 - Lembre de adicionar o Uglify no array de Build-->
+</head>
+<body>
+    <main>
+        <div class="containegr">
+            <h1>PEDRA, PAPEL, TESOURA, <img src="https://cdn-icons-png.flaticon.com/512/2646/2646417.png" alt="lagarto">, <img class="imagem-borda" src="https://www.pngitem.com/pimgs/m/237-2379059_live-long-and-prosper-icon-clipart-png-download.png" alt="spock"></h1>
+            <div>
+                <h3>Não sabe o que é? O Sheldon explica!</h3>
+                <iframe width="960" height="540" src="https://www.youtube.com/embed/smY7u7hwJPk?si=3UuWP01Yrj_0gxsV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h2>Vamos Jogar?</h2>
+            <div>
+                <button class="choice" data-choice="pedra">Pedra</button>
+                <button class="choice" data-choice="papel">Papel</button>
+                <button class="choice" data-choice="tesoura">Tesoura</button>
+                <button class="choice" data-choice="lagarto">Lagarto</button>
+                <button class="choice" data-choice="spock">Spock</button>
+            </div>
+        </div>
+        <div class="resultado">
+            <div id="result" class="result"></div>
+            <div id="description" class="description"></div>
+        </div>
+    </main>
+    <script src="@@endereco_do_js"></script>
+</body>
+</html>
